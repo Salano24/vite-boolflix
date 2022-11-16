@@ -1,47 +1,51 @@
-<script >
-import AppHeader from './components/AppHeader.vue'
-import AppMain from './components/AppMain.vue'
-import AppFooter from './components/AppFooter.vue'
+<script>
 import axios from 'axios'
+import { state } from './state.js'
+import AppMain from "./components/AppMain.vue"
+import AppHeader from "./components/AppHeader.vue"
+import AppFooter from "./components/AppFooter.vue"
 export default {
-    name: 'App',
-    components: {
-        AppHeader,
-        AppMain,
-        AppFooter
-    },
-     data(){
-      return{
-
-      }
-     },
-     mounted(){
-      const config = {
-        method: 'get',
-        url: 'https://api.themoviedb.org/3/search/movie',
-        params:{
-          api_key: '1b32ddfb907479d3f1925c29e2e15ca2',
-          query: 'Matrix'
-        }
-      };
-      axios(config)
-      .then(function (response){
-        console.log(response.data);
-
-      })
-      .catch(function (error) {
-        console.log(error);
-        
-      })
-     }
+  name: 'App',
+  components: {
+    AppMain,
+    AppHeader,
+    AppFooter
+  },
+  data() {
+    return {
+      state
+    }
+  },
+  methods: {
     
+  },
+  mounted() {
+    axios.get(state.url)
+      .then(response => {
+          this.state.entries = response.data.results
+          this.state.info = response.data.info
+          console.log(response.data.results)
+          console.log(this.state.entries)
+      })
+  }
 }
 </script>
 
 <template>
+<div class="filter">
+   <AppHeader />
+  <AppMain />
+  <AppFooter />
+
+</div>
  
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+.filter{
+  background: rgba(0,0,0,.5);
+    background-image: linear-gradient(0deg,transparent 50%,rgba(0,0,0,.7)),radial-gradient(50% 100%,transparent 0,rgba(0,0,0,.7) 100%);
+
+}
 
 </style>
