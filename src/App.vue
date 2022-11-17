@@ -43,9 +43,8 @@ export default {
 
 <style lang="scss" scoped>
 .filter{
-  background: rgba(0,0,0,.5);
-    background-image: linear-gradient(0deg,transparent 50%,rgba(0,0,0,.7)),radial-gradient(50% 100%,transparent 0,rgba(0,0,0,.7) 100%);
-
+  background: rgba(0,0,0,.7);
+   height: 100%;
 }
 
 </style>
