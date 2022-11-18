@@ -1,5 +1,6 @@
 <script>
     import {state} from "../state.js"
+    import '../../node_modules/@fortawesome/fontawesome-free'
     export default {
         name: "AppMain",
         data() {
@@ -29,6 +30,14 @@
                     </div>
                    
                     <p class="description"><span class="movie-property">Description:</span> {{entry.overview}}</p>
+                    <div class="movie-rating justify-content-center">
+                            <p v-for="index in Math.round(entry.vote_average / 2)">
+                                <i class="fa-solid fa-star"></i>
+                            </p> 
+                            <p v-for="index in 5-Math.round(entry.vote_average / 2)">
+                                <i class="fa-regular fa-star"></i>
+                            </p>
+                        </div>
                 </div>
                 <img class="movie-img" :src="state.path+entry.poster_path" :alt="entry.title">
 
@@ -40,6 +49,9 @@
 </template>
 
 <style lang="scss" scoped>
+
+
+     
      .movie-title{
         font-size: 2rem;
         color: #e50914;
