@@ -1,6 +1,6 @@
 <script>
     import {state} from "../state.js"
-    import '../../node_modules/@fortawesome/fontawesome-free'
+
     export default {
         name: "AppMain",
         data() {
@@ -8,13 +8,7 @@
                 state
             }
         },
-        mounted(){
-        },
-        methods: {
-        },
-        computed: {
-            
-        }
+      
     }
 </script>
 
@@ -32,10 +26,10 @@
                     <p class="description"><span class="movie-property">Description:</span> {{entry.overview}}</p>
                     <div class="movie-rating justify-content-center">
                             <p v-for="index in Math.round(entry.vote_average / 2)">
-                                <i class="fa-solid fa-star"></i>
+                                <span class="vote-star">★</span>
                             </p> 
                             <p v-for="index in 5-Math.round(entry.vote_average / 2)">
-                                <i class="fa-regular fa-star"></i>
+                                <span class="five-star">★</span>
                             </p>
                         </div>
                 </div>
@@ -49,8 +43,19 @@
 </template>
 
 <style lang="scss" scoped>
+      .movie-rating{
+        display: flex;
+      }
 
+     .five-star{
+         font-size: 2rem;
+         color: #838383;
+     }
 
+     .vote-star{
+         font-size: 2rem;
+         color: gold;
+     }
      
      .movie-title{
         font-size: 2rem;
